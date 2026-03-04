@@ -4,7 +4,7 @@
 // @version      5.7
 // @description  Rainbow name color cycler for miniblox.io (Legend, Immortal, MOD, Builder, YT, etc)
 // @match        *://miniblox.io/*
-// @author       TheMoneyMan, joudaALT
+// @author       TheM1ddleM1n, joudaALT
 // @grant        none
 // ==/UserScript==
 
