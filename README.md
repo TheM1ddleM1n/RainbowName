@@ -15,12 +15,11 @@ A Tampermonkey userscript that cycles your name color through the rainbow on min
 
 ## Usage
 
-Toggle the rainbow effect three different ways:
+Toggle the rainbow effect two different ways:
 
 | Method | Action |
 |--------|--------|
 | 🖱️ Button | Click the **🌈 Rainbow** button in the bottom-right corner |
-| ⌨️ Hotkey | Press **F8** |
 | 💬 Chat | Type `/color rainbow` in chat |
 
 ---
@@ -40,10 +39,10 @@ Lower `INTERVAL_MS` or raise `HUE_STEP` for a faster cycle, and vice versa. (Be 
 ## Notes
 
 - The `/color #xxxxxx` commands sent under the hood are automatically hidden from your chat so it doesn't get spammed
-- The effect turns off on page refresh — just toggle it back on with the button or F8
+- The effect turns off on page refresh — just toggle it back on with the ui button
 
 ---
 
 ## Credits
 
-Made by **TheMoneyMan** and **joudaALT**
+Made by **TheM1ddleM1n** and **joudaALT**
