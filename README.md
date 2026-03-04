@@ -1,6 +1,6 @@
 # 🌈 RainbowName
 
-A Tampermonkey userscript that cycles your name color through the rainbow on miniblox.io. Works with Legend, Immortal, MOD, Builder, YT, and any other rank that supports custom name colors.
+A Tampermonkey userscript that cycles your name color through the rainbow on miniblox.io. Works with Legend, Immortal, MOD, Builder, YT, and any other rank that supports the command /color
 
 ---
 
