@@ -1,18 +1,18 @@
 // ==UserScript==
 // @name         Rainbow Name Color!
 // @namespace    http://tampermonkey.net/
-// @version      5.4
+// @version      5.6
 // @description  Rainbow name color cycler for miniblox.io (Legend, Immortal, MOD, Builder, YT, etc)
 // @match        *://miniblox.io/*
-// @author       TheMoneyMan
+// @author       TheMoneyMan, joudaALT
 // @grant        none
 // ==/UserScript==
 
 (function () {
     'use strict';
 
-    const INTERVAL_MS = 700;
-    const HUE_STEP = 8;
+    const INTERVAL_MS = 80;
+    const HUE_STEP = 4;
 
     let rainbowInterval = null;
     let hue = 0;
@@ -21,8 +21,6 @@
     let PacketMessage = null;
     let chatPatched = false;
     let socketHooked = false;
-
-    // ─── Color ───────────────────────────────────────────────────────────────────
 
     function hslToHex(h) {
         const s = 1, l = 0.55;
@@ -35,8 +33,6 @@
         return `#${f(0)}${f(8)}${f(4)}`;
     }
 
-    // ─── Game ────────────────────────────────────────────────────────────────────
-
     function getGame() {
         try {
             const root = document.querySelector('#react');
@@ -45,10 +41,6 @@
         } catch (_) { return null; }
     }
 
-    // ─── Socket hook ─────────────────────────────────────────────────────────────
-
-    // Game-specific packets (not party). Updating gameSocket from movement packets
-    // means it's always current — no need to wait for a chat message on new servers.
     const GAME_PACKETS = new Set([
         'SPacketPlayerInput',
         'SPacketPlayerPosLook',
@@ -64,19 +56,15 @@
         const origEmit = SocketProto.emit;
 
         SocketProto.emit = function (event, ...args) {
-            // Always keep gameSocket fresh from any game packet
             if (GAME_PACKETS.has(event)) {
                 gameSocket = this;
             }
 
             if (event === 'SPacketMessage' && args[0]) {
-                // Capture constructor once
                 if (!PacketMessage) {
                     PacketMessage = args[0].constructor;
-                    console.log('[Rainbow] Captured PacketMessage constructor');
                 }
 
-                // Intercept /color rainbow — swallow it
                 const text = (args[0].text ?? '').trim().toLowerCase();
                 if (text === '/color rainbow') {
                     toggle();
@@ -86,11 +74,7 @@
 
             return origEmit.apply(this, arguments);
         };
-
-        console.log('[Rainbow] Socket proto hooked');
     }
-
-    // ─── Patch addChat ───────────────────────────────────────────────────────────
 
     function shouldSuppress(arg) {
         const text = (typeof arg === 'string') ? arg : (arg?.text ?? '');
@@ -107,27 +91,18 @@
             if (shouldSuppress(args[0])) return;
             return original.apply(this, args);
         };
-        console.log('[Rainbow] addChat patched');
     }
-
-    // ─── Send color ───────────────────────────────────────────────────────────────
 
     function sendColor(hex) {
         if (!gameSocket || !PacketMessage) return;
         try {
             gameSocket.emit('SPacketMessage', new PacketMessage({ text: `/color ${hex}` }));
-        } catch (e) {
-            console.warn('[Rainbow] sendColor failed:', e);
-        }
+        } catch (e) {}
     }
-
-    // ─── Rainbow loop ─────────────────────────────────────────────────────────────
 
     function startRainbow() {
         if (rainbowInterval) return;
-        console.log('[Rainbow] Started');
         rainbowInterval = setInterval(() => {
-            // PacketMessage captured yet? If not, wait silently
             if (!gameSocket || !PacketMessage) return;
             sendColor(hslToHex(hue));
             hue = (hue + HUE_STEP) % 360;
@@ -139,11 +114,8 @@
         clearInterval(rainbowInterval);
         rainbowInterval = null;
         hue = 0;
-        console.log('[Rainbow] Stopped');
         updateButton();
     }
-
-    // ─── UI ───────────────────────────────────────────────────────────────────────
 
     let btn;
 
@@ -181,8 +153,6 @@
         if (e.key === 'F8') { e.preventDefault(); toggle(); }
     });
 
-    // ─── Init ─────────────────────────────────────────────────────────────────────
-
     function init() {
         createUI();
         const poller = setInterval(() => {
@@ -192,7 +162,6 @@
                 if (game.party?.io) installSocketHook(game.party.io);
                 patchChat(game.chat);
                 clearInterval(poller);
-                console.log('[Rainbow] Ready — /color rainbow, F8, or button to toggle');
             }
         }, 500);
     }
