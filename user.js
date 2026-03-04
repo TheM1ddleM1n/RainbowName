@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Rainbow Name Color!
 // @namespace    http://tampermonkey.net/
-// @version      5.6
+// @version      5.7
 // @description  Rainbow name color cycler for miniblox.io (Legend, Immortal, MOD, Builder, YT, etc)
 // @match        *://miniblox.io/*
 // @author       TheMoneyMan, joudaALT
@@ -133,7 +133,7 @@
     function createUI() {
         btn = document.createElement('button');
         btn.textContent = '🌈 Rainbow: OFF';
-        btn.title = 'Toggle with button, F8, or /color rainbow in chat';
+        btn.title = 'Toggle with button or /color rainbow in chat';
         btn.style.cssText = `
             position: fixed; bottom: 20px; right: 20px; z-index: 99999;
             padding: 8px 16px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.15);
@@ -148,10 +148,6 @@
     function toggle() {
         rainbowInterval ? stopRainbow() : startRainbow();
     }
-
-    document.addEventListener('keydown', e => {
-        if (e.key === 'F8') { e.preventDefault(); toggle(); }
-    });
 
     function init() {
         createUI();
