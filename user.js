@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name         Rainbow Name Color!
-// @namespace    http://tampermonkey.net/
+// @name         Rainbow Name Color
+// @namespace    hello
 // @version      5.7
 // @description  Rainbow name color cycler for miniblox.io (Legend, Immortal, MOD, Builder, YT, etc)
-// @match        *://miniblox.io/*
+// @match        https://miniblox.io/
 // @author       TheM1ddleM1n, joudaALT
 // @grant        none
 // ==/UserScript==
