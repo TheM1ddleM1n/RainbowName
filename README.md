@@ -6,10 +6,35 @@ A Tampermonkey userscript that cycles your name color through the rainbow on min
 
 ## Installation
 
-1. Install [Tampermonkey](https://www.tampermonkey.net/) for your browser
-2. Open the Tampermonkey dashboard and create a new script
-3. Paste in the contents of `user.js` and save
-4. Jump into [miniblox.io](https://miniblox.io) — you're good to go
+### 1. Install Tampermonkey
+- Go to [tampermonkey.net](https://www.tampermonkey.net/) and click the download link for your browser
+- Click **Add Extension** (or **Add to Chrome/Firefox/Edge**) when prompted
+- Once installed, the Tampermonkey icon (a dark square with two circles) should appear in your browser toolbar
+- If you don't see it, click the puzzle piece icon in your toolbar and pin Tampermonkey
+
+### 2. Create a New Script
+- Click the Tampermonkey icon in your toolbar
+- Select **Create a new script...** from the dropdown
+- A code editor will open with some auto-generated placeholder text
+
+### 3. Paste in the Script
+- Open [`user.js`](./user.js) from this repo and copy all of its contents
+- Back in the Tampermonkey editor, select everything (**Ctrl+A** / **Cmd+A**) and delete it
+- Paste in the copied code (**Ctrl+V** / **Cmd+V**)
+- Save with **Ctrl+S** (or **Cmd+S** on Mac) — the tab title should change to show the script name
+
+### 4. Allow UserScripts
+- Click the Tampermonkey icon → **Dashboard**
+- Go to the **Settings** tab
+- Find **Allow UserScripts** and make sure it is set to **Enabled**
+- Scroll down and hit **Save** if prompted
+
+### 5. Launch the Game
+- Go to [miniblox.io](https://miniblox.io) (or refresh the tab if you already had it open)
+- Once you're in the game, you should see a **🌈 Rainbow: OFF** button in the bottom-right corner of your screen
+- Click it to start the effect!
+
+> **Something not working?** Click the Tampermonkey icon and check that the **Rainbow Name Color** script is listed and its toggle is switched **on**. Also make sure you're on exactly `https://miniblox.io/` — the script won't run on any other URL.
 
 ---
 
