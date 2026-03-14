@@ -2,7 +2,7 @@
 // @name         Rainbow Name Color
 // @namespace    hello
 // @version      5.7
-// @description  Rainbow name color cycler for miniblox.io (Legend, Immortal, MOD, Builder, YT, etc)
+// @description  Rainbow name color cycler for miniblox.io (Legend, Immortal, MOD, Builder, YT, etc) ✔️✔️
 // @match        https://miniblox.io/
 // @author       TheM1ddleM1n, joudaALT
 // @grant        none
