@@ -24,15 +24,17 @@ A Tampermonkey userscript that cycles your name color through the rainbow on min
 - Save with **Ctrl+S** (or **Cmd+S** on Mac) — the tab title should change to show the script name
 
 ### 4. Allow UserScripts
-- Click the Tampermonkey icon → **Dashboard**
-- Go to the **Settings** tab
-- Find **Allow UserScripts** and make sure it is set to **Enabled**
-- Scroll down and hit **Save** if prompted
+- Click the icon that looks like a puzzle piece in your toolbar
+- Click on the 3 dots next to Tampermonkey
+- Click Manage Extension 
+- Find **Allow UserScripts** and make sure it is set to **Enabled** otherwise THIS WILL NOT WORK
+- Make sure it is ON (blue circle) 
 
 ### 5. Launch the Game
 - Go to [miniblox.io](https://miniblox.io) (or refresh the tab if you already had it open)
 - Once you're in the game, you should see a **🌈 Rainbow: OFF** button in the bottom-right corner of your screen
 - Click it to start the effect!
+- You are good to go!
 
 > **Something not working?** Click the Tampermonkey icon and check that the **Rainbow Name Color** script is listed and its toggle is switched **on**. Also make sure you're on exactly `https://miniblox.io/` — the script won't run on any other URL.
 
